@@ -1,3 +1,4 @@
+//function to evaluate expression using math.js api
 async function evaluate(expression) {
     const apiUrl = "https://api.mathjs.org/v4/";
     const response = await fetch(apiUrl, {
@@ -17,7 +18,7 @@ async function evaluate(expression) {
       return "Error:Please enter correct mathematical expression";
     }
   }
-  //reading input
+  //reading input from user
   async function myfunction() {
     const expressions = [];
     const readline = require("readline");
@@ -27,6 +28,7 @@ async function evaluate(expression) {
     });
   
     console.log("Enter expressions (enter 'end' to end):");
+    //read expression from input and end the program if input is end
     rl.on("line", (input) => {
       if (input.toLowerCase() === "end") {
         rl.close();
@@ -34,7 +36,7 @@ async function evaluate(expression) {
         expressions.push(input);
       }
     });
-  
+// when user input is finished evaluate and display the results
     rl.on("close", async () => {
       console.log("Results:");
       for (const expression of expressions) {
